@@ -5,10 +5,10 @@ on:
     branches:
       - main
     paths-ignore:
-      - "**.md"
+      - '**.md'
   pull_request:
     paths-ignore:
-      - "**.md"
+      - '**.md'
 
 jobs:
   shellcheck:
@@ -37,4 +37,3 @@ jobs:
 
       - name: Run shfmt
         run: scripts/shfmt.bash
-
