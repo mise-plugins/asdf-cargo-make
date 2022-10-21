@@ -11,37 +11,42 @@ on:
       - '**.md'
 
 jobs:
+  asdf-parser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v3
+      - uses: kachick/action-parse-asdf-tool-versions@v1
+        id: parse
+    outputs:
+      tool-versions: '${{ steps.parse.outputs.json }}'
+
   shellcheck:
+    needs: [asdf-parser]
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # Unfortunately, plugin-add action can not take git-url
-      # https://github.com/asdf-vm/actions/blob/171cc3570019f3a69ba10ae269ab46990936fa9f/lib/plugins-add/index.ts#L53-L62
-      # So combined setup action manually
-      - name: Install asdf itself
-        uses: asdf-vm/actions/setup@v1
-      - run: 'asdf plugin-add dprint https://github.com/asdf-community/asdf-dprint'
+      - uses: actions/checkout@v3
 
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
+        with:
+          tool_versions: 'shellcheck ${{ fromJson(needs.asdf-parser.outputs.tool-versions)}.shellcheck }'
 
       - name: Run ShellCheck
         run: scripts/shellcheck.bash
 
   shellfmt:
+    needs: [asdf-parser]
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install asdf itself
-        uses: asdf-vm/actions/setup@v1
-      - run: 'asdf plugin-add dprint https://github.com/asdf-community/asdf-dprint'
+      - uses: actions/checkout@v3
 
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
+        with:
+          tool_versions: 'shellfmt ${{ fromJson(needs.asdf-parser.outputs.tool-versions)}.shellcheck }'
 
       - name: List file to shfmt
         run: shfmt -f .
