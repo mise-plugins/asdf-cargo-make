@@ -17,6 +17,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Unfortunately, plugin-add action can not take git-url
+      # https://github.com/asdf-vm/actions/blob/171cc3570019f3a69ba10ae269ab46990936fa9f/lib/plugins-add/index.ts#L53-L62
+      # So combined setup action manually
+      - name: Install asdf itself
+        uses: asdf-vm/actions/setup@v1
+      - run: 'asdf plugin-add dprint https://github.com/asdf-community/asdf-dprint'
+
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
 
@@ -28,6 +35,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Install asdf itself
+        uses: asdf-vm/actions/setup@v1
+      - run: 'asdf plugin-add dprint https://github.com/asdf-community/asdf-dprint'
 
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
