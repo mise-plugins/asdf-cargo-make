@@ -83,8 +83,8 @@ install_version() {
 
     # cargo-make has LICENSE and README.md in same dir, and recursivie copy for each file makes unexpected shims.
     # So DO NOT USE `cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"` here.
-    cp "${ASDF_DOWNLOAD_PATH}/cargo-make" "$install_path"
-    cp "${ASDF_DOWNLOAD_PATH}/makers" "$install_path"
+    # And `makers` command does not exist in old versions
+    find "$ASDF_DOWNLOAD_PATH" -name '*make*' -exec cp \{\} "$install_path" \;
 
     local tool_cmd
     tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
