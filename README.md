@@ -18,7 +18,7 @@
 
 **TODO: adapt this section**
 
-- `bash`, `curl`, `tar`: generic POSIX utilities.
+- `bash`, `curl`, `unzip`: generic POSIX utilities.
 - `SOME_ENV_VAR`: set this environment variable in your shell config to load the correct version of tool x.
 
 # Install
@@ -44,7 +44,8 @@ asdf install cargo-make latest
 asdf global cargo-make latest
 
 # Now cargo-make commands are available
-cargo-make --help
+makers --version
+cargo-make make --help
 ```
 
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
