@@ -56,6 +56,9 @@ download_release() {
 
   local archive_format="zip"
 
+  # They use this naming since 0.15.1, currently do not work for the ancient versions
+  # https://github.com/sagiegurari/cargo-make/releases/tag/0.15.1 - 2018-11-13
+  # https://github.com/sagiegurari/cargo-make/releases/tag/0.15.0 - 2018-11-13
   # Snapshot of the addressies are below
   # https://github.com/sagiegurari/cargo-make/releases/download/0.36.2/cargo-make-v0.36.2-x86_64-unknown-linux-musl.zip
   # https://github.com/sagiegurari/cargo-make/releases/download/0.36.2/cargo-make-v0.36.2-x86_64-apple-darwin.zip
