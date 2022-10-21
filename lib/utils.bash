@@ -77,8 +77,6 @@ install_version() {
 
   (
     mkdir -p "$install_path"
-    ls -alh "$ASDF_DOWNLOAD_PATH"
-    ls -alh "$ASDF_DOWNLOAD_PATH"/*
 
     # cargo-make has LICENSE and README.md in same dir, and recursivie copy for each file makes unexpected shims.
     # So DO NOT USE `cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"` here.
