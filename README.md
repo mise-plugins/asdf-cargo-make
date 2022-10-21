@@ -22,8 +22,6 @@
 Plugin:
 
 ```shell
-asdf plugin add cargo-make
-# or
 asdf plugin add cargo-make https://github.com/kachick/asdf-cargo-make.git
 ```
 
