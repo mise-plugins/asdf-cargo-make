@@ -31,7 +31,7 @@ jobs:
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
         with:
-          tool_versions: 'shellcheck ${{ fromJson(needs.asdf-parser.outputs.tool-versions)}.shellcheck }'
+          tool_versions: 'shellcheck ${{ fromJson(needs.asdf-parser.outputs.tool-versions).shellcheck }}'
 
       - name: Run ShellCheck
         run: scripts/shellcheck.bash
@@ -46,7 +46,7 @@ jobs:
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
         with:
-          tool_versions: 'shellfmt ${{ fromJson(needs.asdf-parser.outputs.tool-versions)}.shellcheck }'
+          tool_versions: 'shellfmt ${{ fromJson(needs.asdf-parser.outputs.tool-versions).shellfmt }}'
 
       - name: List file to shfmt
         run: shfmt -f .
