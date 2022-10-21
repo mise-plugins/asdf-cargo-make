@@ -5,36 +5,51 @@ on:
     branches:
       - main
     paths-ignore:
-      - "**.md"
+      - '**.md'
   pull_request:
     paths-ignore:
-      - "**.md"
+      - '**.md'
 
 jobs:
+  asdf-parser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v3
+      - uses: kachick/action-parse-asdf-tool-versions@v1
+        id: parse
+    outputs:
+      tool-versions: '${{ steps.parse.outputs.json }}'
+
   shellcheck:
+    needs: [asdf-parser]
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
+        with:
+          tool_versions: 'shellcheck ${{ fromJson(needs.asdf-parser.outputs.tool-versions).shellcheck }}'
 
       - name: Run ShellCheck
         run: scripts/shellcheck.bash
 
-  shellfmt:
+  shfmt:
+    needs: [asdf-parser]
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
+        with:
+          tool_versions: 'shfmt ${{ fromJson(needs.asdf-parser.outputs.tool-versions).shfmt }}'
 
       - name: List file to shfmt
         run: shfmt -f .
 
       - name: Run shfmt
         run: scripts/shfmt.bash
-

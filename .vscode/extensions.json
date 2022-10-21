@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "redhat.vscode-yaml",
+    "editorconfig.editorconfig",
+    "dprint.dprint",
+    "streetsidesoftware.code-spell-checker",
+    "timonwong.shellcheck",
+    "foxundermoon.shell-format"
+  ]
+}
