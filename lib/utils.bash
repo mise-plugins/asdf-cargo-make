@@ -2,10 +2,11 @@
 
 set -euo pipefail
 
-# TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for cargo-make.
 GH_REPO="https://github.com/sagiegurari/cargo-make"
 TOOL_NAME="cargo-make"
-TOOL_TEST="cargo-make --help"
+
+# NOTE: Both --help, --version options exist. Prefix should be `makers` or `cargo-make make`.
+TOOL_TEST="makers --version"
 
 fail() {
   echo -e "asdf-$TOOL_NAME: $*"
@@ -14,7 +15,6 @@ fail() {
 
 curl_opts=(-fsSL)
 
-# NOTE: You might want to remove this if cargo-make is not hosted on GitHub releases.
 if [ -n "${GITHUB_API_TOKEN:-}" ]; then
   curl_opts=("${curl_opts[@]}" -H "Authorization: token $GITHUB_API_TOKEN")
 fi
@@ -31,8 +31,6 @@ list_github_tags() {
 }
 
 list_all_versions() {
-  # TODO: Adapt this. By default we simply list the tag names from GitHub releases.
-  # Change this function if cargo-make has other means of determining installable versions.
   list_github_tags
 }
 
@@ -41,8 +39,28 @@ download_release() {
   version="$1"
   filename="$2"
 
-  # TODO: Adapt the release URL convention for cargo-make
-  url="$GH_REPO/archive/v${version}.tar.gz"
+  local platform
+
+  case "$OSTYPE" in
+    darwin*) platform="apple-darwin" ;;
+    linux*) platform="unknown-linux-musl" ;;
+    *) fail "Unsupported platform" ;;
+  esac
+
+  local architecture
+
+  case "$(uname -m)" in
+    x86_64*) architecture="x86_64" ;;
+    *) fail "Unsupported architecture" ;;
+  esac
+
+  local archive_format="zip"
+
+  # Snapshot of the addressies are below
+  # https://github.com/sagiegurari/cargo-make/releases/download/0.36.2/cargo-make-v0.36.2-x86_64-unknown-linux-musl.zip
+  # https://github.com/sagiegurari/cargo-make/releases/download/0.36.2/cargo-make-v0.36.2-x86_64-apple-darwin.zip
+  # https://github.com/sagiegurari/cargo-make/releases/download/0.36.2/cargo-make-v0.36.2-x86_64-pc-windows-msvc.zip
+  local url="$GH_REPO/releases/download/${version}/cargo-make-v${version}-${architecture}-${platform}.${archive_format}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
@@ -59,9 +77,14 @@ install_version() {
 
   (
     mkdir -p "$install_path"
-    cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
+    ls -alh "$ASDF_DOWNLOAD_PATH"
+    ls -alh "$ASDF_DOWNLOAD_PATH"/*
 
-    # TODO: Assert cargo-make executable exists.
+    # cargo-make has LICENSE and README.md in same dir, and recursivie copy for each file makes unexpected shims.
+    # So DO NOT USE `cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"` here.
+    cp "${ASDF_DOWNLOAD_PATH}/cargo-make" "$install_path"
+    cp "${ASDF_DOWNLOAD_PATH}/makers" "$install_path"
+
     local tool_cmd
     tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
     test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."

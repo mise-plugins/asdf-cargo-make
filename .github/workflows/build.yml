@@ -4,12 +4,17 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "**.md"
   pull_request:
+    paths-ignore:
+      - "**.md"
 
 jobs:
   plugin_test:
     name: asdf plugin test
     strategy:
+      fail-fast: false
       matrix:
         os:
           - ubuntu-latest
@@ -19,4 +24,4 @@ jobs:
       - name: asdf_plugin_test
         uses: asdf-vm/actions/plugin-test@v1
         with:
-          command: cargo-make --help
+          command: 'makers --version && cargo-make make --version'
