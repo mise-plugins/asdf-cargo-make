@@ -6,7 +6,7 @@ Testing Locally:
 asdf plugin test <plugin-name> <plugin-url> [--asdf-tool-version <version>] [--asdf-plugin-gitref <git-ref>] [test-command*]
 
 #
-asdf plugin test cargo-make https://github.com/kachick/asdf-cargo-make.git "cargo-make --help"
+asdf plugin test cargo-make https://github.com/kachick/asdf-cargo-make.git "cargo-make make --version"
 ```
 
 Tests are automatically run in GitHub Actions on push and PR.
