@@ -12,7 +12,6 @@ on:
 
 jobs:
   plugin_test_latest:
-    name: asdf plugin test for latest version
     strategy:
       fail-fast: false
       matrix:
@@ -21,12 +20,10 @@ jobs:
           - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - name: asdf_plugin_test for latest
-        uses: asdf-vm/actions/plugin-test@v1
+      - uses: asdf-vm/actions/plugin-test@v1
         with:
           command: 'makers --version && cargo-make make --version'
   plugin_test_oldest:
-    name: asdf plugin test for supporting oldest version
     strategy:
       fail-fast: false
       matrix:
@@ -35,8 +32,7 @@ jobs:
           - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - name: asdf_plugin_test for oldest
-        uses: asdf-vm/actions/plugin-test@v1
+      - uses: asdf-vm/actions/plugin-test@v1
         with:
           # https://github.com/kachick/asdf-cargo-make/blob/8a7095692e6a880568a5b48c441ea518ef6a61cb/bin/download#L12
           # https://github.com/kachick/asdf-cargo-make/blob/8a7095692e6a880568a5b48c441ea518ef6a61cb/lib/utils.bash#L59-L61
