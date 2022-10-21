@@ -5,8 +5,8 @@ set -euo pipefail
 GH_REPO="https://github.com/sagiegurari/cargo-make"
 TOOL_NAME="cargo-make"
 
-# NOTE: Both --help, --version options exist. Prefix should be `makers` or `cargo-make make`.
-TOOL_TEST="makers --version"
+# NOTE: Both --help, --version options exist. Prefix should be `makers` or `cargo-make make`. However `makers` does not exist in older versions.
+TOOL_TEST="cargo-make make --version"
 
 fail() {
   echo -e "asdf-$TOOL_NAME: $*"
@@ -85,9 +85,7 @@ install_version() {
     # So DO NOT USE `cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"` here.
     # And `makers` command does not exist in old versions
     cp "${ASDF_DOWNLOAD_PATH}/cargo-make" "$install_path"
-    set +o pipefail
     cp "${ASDF_DOWNLOAD_PATH}/makers" "$install_path" || echo "Version $version does not have 'makers' command"
-    set -o pipefail
 
     local tool_cmd
     tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
