@@ -32,12 +32,15 @@ asdf list-all cargo-make
 # Install specific version
 asdf install cargo-make latest
 
+# NOTE: This plugin supports only cargo-make 0.16.0+
+
 # Set a version globally (on your ~/.tool-versions file)
 asdf global cargo-make latest
 
 # Now cargo-make commands are available
-makers --version
 cargo-make make --help
+# Latest versions have `makers` command too
+makers --version
 ```
 
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
