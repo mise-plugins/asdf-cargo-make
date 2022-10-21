@@ -36,7 +36,7 @@ jobs:
       - name: Run ShellCheck
         run: scripts/shellcheck.bash
 
-  shellfmt:
+  shfmt:
     needs: [asdf-parser]
     timeout-minutes: 5
     runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
         with:
-          tool_versions: 'shellfmt ${{ fromJson(needs.asdf-parser.outputs.tool-versions).shellfmt }}'
+          tool_versions: 'shfmt ${{ fromJson(needs.asdf-parser.outputs.tool-versions).shfmt }}'
 
       - name: List file to shfmt
         run: shfmt -f .
