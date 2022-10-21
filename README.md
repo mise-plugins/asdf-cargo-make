@@ -1,11 +1,7 @@
-<div align="center">
-
-# asdf-cargo-make [![Build](https://github.com/kachick/asdf-cargo-make/actions/workflows/build.yml/badge.svg)](https://github.com/kachick/asdf-cargo-make/actions/workflows/build.yml) [![Lint](https://github.com/kachick/asdf-cargo-make/actions/workflows/lint.yml/badge.svg)](https://github.com/kachick/asdf-cargo-make/actions/workflows/lint.yml)
+# asdf-cargo-make [![Build](https://github.com/kachick/asdf-cargo-make/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/kachick/asdf-cargo-make/actions/workflows/build.yml?query=branch%3Amain) [![Lint](https://github.com/kachick/asdf-cargo-make/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/kachick/asdf-cargo-make/actions/workflows/lint.yml?query=branch%3Amain)
 
 
 [cargo-make](https://sagiegurari.github.io/cargo-make/) plugin for the [asdf version manager](https://asdf-vm.com).
-
-</div>
 
 # Contents
 
