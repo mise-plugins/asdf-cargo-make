@@ -1,7 +1,20 @@
 # Contributing
 
 You should install asdf and cargo-make before this guide.\
-Then, you can run test and lint as below.
+After installing asdf, running below command in this repo finishes setups.
+
+```bash
+$ asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git
+$ asdf install cargo-make
+$ makers setup
+cargo-make 0.36.2 is already installed
+dprint 0.32.1 is already installed
+shellcheck 0.8.0 is already installed
+shfmt 3.5.1 is already installed
+[cargo-make] INFO - Build Done in 1.09 seconds.
+```
+
+`help` shows providing tasks for developping
 
 ```console
 $ makers help
@@ -13,14 +26,11 @@ help - Might help you
 lint - Run linters without changes
 setup - Install dependencies
 test - Run tests with `asdf plugin test`
+```
 
-$ makers setup
-cargo-make 0.36.2 is already installed
-dprint 0.32.1 is already installed
-shellcheck 0.8.0 is already installed
-shfmt 3.5.1 is already installed
-[cargo-make] INFO - Build Done in 1.09 seconds.
+`check` task should be passed after your commits
 
+```console
 $ makers check
 [cargo-make] INFO - makers 0.36.2
 [cargo-make] INFO - Build File: Makefile.toml
