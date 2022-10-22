@@ -49,6 +49,8 @@ description = 'Install dependencies'
 script = [
   '(asdf plugin-list | grep cargo-make) || asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git',
   '(asdf plugin-list | grep dprint) || asdf plugin-add dprint https://github.com/asdf-community/asdf-dprint',
+  '(asdf plugin-list | grep shellcheck) || asdf plugin-add shellcheck',
+  '(asdf plugin-list | grep shfmt) || asdf plugin-add shfmt',
   'asdf install',
 ]
 

@@ -1,0 +1,23 @@
+name: CI for dev env
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  tools:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: asdf-vm/actions/setup@v1
+      - run: 'asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git'
+      - run: 'asdf install cargo-make'
+      - run: 'makers help'
+      - run: 'makers setup'
+      - run: 'makers check'
