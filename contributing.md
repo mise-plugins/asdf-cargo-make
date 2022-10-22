@@ -39,9 +39,9 @@ $ makers check
 [cargo-make] INFO - Running Task: lint
 [cargo-make] INFO - Running Task: check_no_git_diff
 [cargo-make] INFO - Running Task: test
-Updating cargo-make to you-branch
-Already on 'you-branch'
-Your branch is up to date with 'origin/you-branch'.
+Updating cargo-make to your-branch
+Already on 'your-branch'
+Your branch is up to date with 'origin/your-branch'.
 * Downloading cargo-make release 0.36.2...
 Archive:  /tmp/asdf.919U/downloads/cargo-make/0.36.2/cargo-make-0.36.2.zip
   inflating: /tmp/asdf.919U/downloads/cargo-make/0.36.2/LICENSE
