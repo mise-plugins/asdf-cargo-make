@@ -22,7 +22,7 @@ check - Should pass before merging PR
 check_no_git_diff - asdf built-in "plugin test" requires git managed codes. This prevents unexpected run
 empty - Empty Task
 format - Run formatters with changes
-help - Might help you
+help - Might help you - (This one)
 lint - Run linters without changes
 setup - Install dependencies
 test - Run tests with `asdf plugin test`

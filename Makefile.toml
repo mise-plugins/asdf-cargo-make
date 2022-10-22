@@ -56,7 +56,7 @@ script = [
 
 [tasks.help]
 category = "Tools"
-description = 'Might help you'
+description = 'Might help you - (This one)'
 script = [
   'makers --list-category-steps Tools',
 ]
