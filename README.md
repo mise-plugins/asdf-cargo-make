@@ -12,7 +12,6 @@
 # Dependencies
 
 - `bash`, `curl`, `unzip`: generic POSIX utilities.
-- `SOME_ENV_VAR`: set this environment variable in your shell config to load the correct version of tool x.
 
 # Install
 
