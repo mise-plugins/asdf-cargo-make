@@ -3,7 +3,7 @@
 You should install asdf and cargo-make before this guide.\
 After installing asdf, running below command in this repo finishes setups.
 
-```bash
+```console
 $ asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git
 $ asdf install cargo-make
 $ makers setup
