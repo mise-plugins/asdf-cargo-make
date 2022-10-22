@@ -1,0 +1,19 @@
+name: Release
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  release:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Wait other jobs
+        uses: kachick/wait-other-jobs@v1
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+        if: startsWith(github.ref, 'refs/tags/')
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
