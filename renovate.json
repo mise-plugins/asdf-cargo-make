@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>kachick/renovate-config-asdf#1.6.0",
+    "github>kachick/renovate-config-asdf:self",
+    "github>kachick/renovate-config-dprint"
+  ],
+  "labels": ["dependencies", "renovate"],
+  "automerge": true,
+  "enabledManagers": ["regex"],
+  "prHourlyLimit": 10,
+  "prConcurrentLimit": 5,
+  "packageRules": [
+    {
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "rangeStrategy": "bump"
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
+  ]
+}
