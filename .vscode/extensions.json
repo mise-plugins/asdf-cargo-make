@@ -5,6 +5,7 @@
     "dprint.dprint",
     "streetsidesoftware.code-spell-checker",
     "timonwong.shellcheck",
-    "foxundermoon.shell-format"
+    "foxundermoon.shell-format",
+    "tamasfe.even-better-toml"
   ]
 }

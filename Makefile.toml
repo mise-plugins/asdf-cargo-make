@@ -1,0 +1,23 @@
+[config]
+skip_core_tasks = true
+
+[tasks.lint]
+category = "Tools"
+script = [
+  "./scripts/shellcheck.bash",
+  "./scripts/shfmt.bash",
+  "dprint check",
+]
+
+[tasks.format]
+category = "Tools"
+script = [
+  "shfmt --write ./bin/* ./lib/*",
+  "dprint fmt",
+]
+
+[tasks.test]
+category = "Tools"
+script = [
+  "asdf plugin test cargo-make",
+]
