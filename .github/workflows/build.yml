@@ -12,6 +12,7 @@ on:
 
 jobs:
   plugin_test_latest:
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
@@ -24,6 +25,7 @@ jobs:
         with:
           command: 'makers --version && cargo-make make --version'
   plugin_test_oldest:
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
