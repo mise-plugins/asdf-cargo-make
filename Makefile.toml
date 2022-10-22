@@ -19,5 +19,5 @@ script = [
 [tasks.test]
 category = "Tools"
 script = [
-  "asdf plugin test cargo-make",
+  'asdf plugin test cargo-make ./.git --asdf-plugin-gitref main "cargo-make make --version"',
 ]
