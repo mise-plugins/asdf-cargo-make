@@ -3,6 +3,7 @@ skip_core_tasks = true
 
 [tasks.lint]
 category = "Tools"
+description = "Run linters without changes"
 script = [
   "./scripts/shellcheck.bash",
   "./scripts/shfmt.bash",
@@ -11,13 +12,49 @@ script = [
 
 [tasks.format]
 category = "Tools"
+description = "Run formatters with changes"
 script = [
   "shfmt --write ./bin/* ./lib/*",
   "dprint fmt",
 ]
 
+[tasks.check_no_git_diff]
+category = "Tools"
+description = 'asdf built-in "plugin test" requires git managed codes. This prevents unexpected run'
+script = [
+  '(git add --intent-to-add . && git diff --exit-code) || (echo "You should commit all diff before running tests"; exit 1)',
+]
+
 [tasks.test]
 category = "Tools"
+description = 'Run tests with `asdf plugin test`'
+dependencies = [
+  "check_no_git_diff",
+]
 script = [
-  'asdf plugin test cargo-make ./.git --asdf-plugin-gitref main "cargo-make make --version"',
+  'asdf plugin test cargo-make ./.git --asdf-plugin-gitref "$(git rev-parse --abbrev-ref HEAD)" "cargo-make make --version"',
+]
+
+[tasks.check]
+category = "Tools"
+description = 'Should pass before merging PR'
+dependencies = [
+  "lint",
+  "test",
+]
+
+[tasks.setup]
+category = "Tools"
+description = 'Install dependencies'
+script = [
+  '(asdf plugin-list | grep cargo-make) || asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git',
+  '(asdf plugin-list | grep dprint) || asdf plugin-add dprint https://github.com/asdf-community/asdf-dprint',
+  'asdf install',
+]
+
+[tasks.help]
+category = "Tools"
+description = 'Might help you'
+script = [
+  'makers --list-category-steps Tools',
 ]
