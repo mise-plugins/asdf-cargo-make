@@ -46,11 +46,17 @@ dependencies = [
 [tasks.setup]
 category = "Tools"
 description = 'Install dependencies'
+# Specify git-url even if they are registered in https://github.com/asdf-vm/asdf-plugins instead of using short-name.
+# To consider use-case of enabling `disable_plugin_short_name_repository=yes`
 script = [
+  # https://github.com/asdf-vm/asdf-plugins/blob/6498384c22a29602d065d3db681b8f32f7e4295b/plugins/cargo-make#L1
   '(asdf plugin-list | grep cargo-make) || asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git',
-  '(asdf plugin-list | grep dprint) || asdf plugin-add dprint https://github.com/asdf-community/asdf-dprint',
-  '(asdf plugin-list | grep shellcheck) || asdf plugin-add shellcheck',
-  '(asdf plugin-list | grep shfmt) || asdf plugin-add shfmt',
+  # https://github.com/asdf-vm/asdf-plugins/blob/6498384c22a29602d065d3db681b8f32f7e4295b/plugins/dprint#L1
+  '(asdf plugin-list | grep dprint) || asdf plugin-add dprint https://github.com/asdf-community/asdf-dprint.git',
+  # https://github.com/asdf-vm/asdf-plugins/blob/6498384c22a29602d065d3db681b8f32f7e4295b/plugins/shellcheck#L1
+  '(asdf plugin-list | grep shellcheck) || asdf plugin-add shellcheck https://github.com/luizm/asdf-shellcheck.git',
+  # https://github.com/asdf-vm/asdf-plugins/blob/6498384c22a29602d065d3db681b8f32f7e4295b/plugins/shfmt#L1
+  '(asdf plugin-list | grep shfmt) || asdf plugin-add shfmt https://github.com/luizm/asdf-shfmt.git',
   'asdf install',
 ]
 

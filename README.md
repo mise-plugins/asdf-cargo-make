@@ -21,6 +21,12 @@ Plugin:
 asdf plugin add cargo-make https://github.com/kachick/asdf-cargo-make.git
 ```
 
+[short-name is also available](https://github.com/asdf-vm/asdf-plugins/blob/6498384c22a29602d065d3db681b8f32f7e4295b/plugins/cargo-make#L1) when you does not use [disable_plugin_short_name_repository](https://asdf-vm.com/manage/configuration.html#disable-plugin-short-name-repository)
+
+```shell
+asdf plugin add cargo-make
+```
+
 cargo-make:
 
 ```shell
