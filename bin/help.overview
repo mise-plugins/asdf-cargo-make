@@ -3,7 +3,6 @@
 set -euo pipefail
 
 cat <<EOD
-asdf plugin: https://github.com/kachick/asdf-cargo-make
-available with short-name: https://github.com/asdf-vm/asdf-plugins/pull/693
-cargo-make: https://github.com/sagiegurari/cargo-make
+cargo-make plugin for the asdf version manager
+
 EOD
