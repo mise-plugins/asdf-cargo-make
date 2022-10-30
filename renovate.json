@@ -15,10 +15,6 @@
         "*"
       ],
       "rangeStrategy": "bump"
-    },
-    {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
     }
   ]
 }
