@@ -66,6 +66,7 @@ download_release() {
 
   case "$(uname -m)" in
   x86_64*) architecture="x86_64" ;;
+  aarch64 | arm64) fail "Unsupported architecture for now. See https://github.com/sagiegurari/cargo-make/issues/738" ;;
   *) fail "Unsupported architecture" ;;
   esac
 
