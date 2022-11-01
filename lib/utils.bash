@@ -8,6 +8,17 @@ TOOL_NAME="cargo-make"
 # NOTE: Both --help, --version options exist. Prefix should be `makers` or `cargo-make make`. However `makers` does not exist in older versions.
 TOOL_TEST="cargo-make make --version"
 
+# We would check after released 1.0.0+
+supporting_cargomake_version_pattern='^([1-9][0-9]{0,}|0)\.([2-9][0-9]|1[6-9])\.[0-9]{1,}$'
+
+filter_supporting_cargomake_versions() {
+  grep -E "$supporting_cargomake_version_pattern"
+}
+
+is_supporting_cargomake_version() {
+  echo "$ASDF_INSTALL_VERSION" | grep -qE "$supporting_cargomake_version_pattern"
+}
+
 fail() {
   echo -e "asdf-$TOOL_NAME: $*"
   exit 1
@@ -32,6 +43,10 @@ list_github_tags() {
 
 list_all_versions() {
   list_github_tags
+}
+
+list_all_supporting_versions() {
+  list_all_versions | filter_supporting_cargomake_versions
 }
 
 download_release() {

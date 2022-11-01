@@ -8,8 +8,8 @@ plugin_dir=$(dirname "$(dirname "$current_script_path")")
 # shellcheck source=../lib/utils.bash
 source "${plugin_dir}/lib/utils.bash"
 
-if (echo "$ASDF_INSTALL_VERSION" | grep -E '^0\.[0-9]\.') || (echo "$ASDF_INSTALL_VERSION" | grep -E '^0\.1[0-5]\.'); then
-  fail "This plugin supports cargo-make version since 0.16.0 for simplicity. They changed release file naming since 0.15.1."
+if ! is_supporting_cargomake_version; then
+  fail "Supporting cargo-make versions since 0.16.0 or later"
 fi
 
 mkdir -p "$ASDF_DOWNLOAD_PATH"
