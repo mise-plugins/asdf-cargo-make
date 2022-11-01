@@ -11,7 +11,7 @@ on:
       - '**.md'
 
 jobs:
-  plugin_test_latest:
+  plugin-test:
     timeout-minutes: 10
     strategy:
       fail-fast: false
@@ -19,25 +19,17 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: asdf-vm/actions/plugin-test@v1
-        with:
-          command: 'makers --version && cargo-make make --version'
-  plugin_test_oldest:
-    timeout-minutes: 10
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: asdf-vm/actions/plugin-test@v1
-        with:
+        target:
+          - tool-version: 'latest'
+            command: 'makers --version && cargo-make make --version'
           # https://github.com/kachick/asdf-cargo-make/blob/8a7095692e6a880568a5b48c441ea518ef6a61cb/bin/download#L12
           # https://github.com/kachick/asdf-cargo-make/blob/8a7095692e6a880568a5b48c441ea518ef6a61cb/lib/utils.bash#L59-L61
-          version: '0.16.0'
-          # makers does not exist
-          command: 'cargo-make make --version'
+          - tool-version: '0.16.0'
+            # makers does not exist
+            command: 'cargo-make make --version'
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: asdf-vm/actions/plugin-test@v1
+        with:
+          version: ${{ matrix.target.tool-version }}
+          command: ${{ matrix.target.command }}
