@@ -8,4 +8,10 @@ plugin_dir=$(dirname "$(dirname "$current_script_path")")
 # shellcheck source=../lib/utils.bash
 source "${plugin_dir}/lib/utils.bash"
 
-list_all_versions | sort_versions | xargs echo
+# If we would debug.
+#   diff <(list_all_versions) <(list_all_supporting_versions)
+
+# Shows only this plugin supporting versions.
+#   https://github.com/asdf-vm/asdf/blob/950e4172719cde107e9dfc2c8c38d88ee0d000ca/docs/plugins/create.md?plain=1#L9
+#   https://github.com/asdf-vm/asdf/blob/950e4172719cde107e9dfc2c8c38d88ee0d000ca/docs/plugins/create.md?plain=1#L32
+list_all_supporting_versions | sort_versions | xargs echo
