@@ -1,6 +1,5 @@
 # Contributing
 
-You should install asdf and cargo-make before this guide.\
 After installing asdf, running below command in this repo finishes setups.
 
 ```console
