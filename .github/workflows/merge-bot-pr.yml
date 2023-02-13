@@ -21,9 +21,11 @@ jobs:
       - name: Wait other jobs
         if: ${{steps.metadata.outputs.update-type != 'version-update:semver-major'}}
         uses: kachick/wait-other-jobs@v1
-        timeout-minutes: 10
+        timeout-minutes: 30
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
+          retry-method: 'equal_intervals'
+          min-interval-seconds: '15'
       - name: Approve and merge
         if: ${{steps.metadata.outputs.update-type != 'version-update:semver-major'}}
         run: gh pr review --approve "$PR_URL" && gh pr merge --auto --squash "$PR_URL"
