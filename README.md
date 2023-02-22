@@ -1,6 +1,7 @@
-# asdf-cargo-make [![Build](https://github.com/kachick/asdf-cargo-make/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/kachick/asdf-cargo-make/actions/workflows/build.yml?query=branch%3Amain) [![Lint](https://github.com/kachick/asdf-cargo-make/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/kachick/asdf-cargo-make/actions/workflows/lint.yml?query=branch%3Amain)
+# asdf-cargo-make [![Build](https://github.com/kachick/asdf-cargo-make/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/kachick/asdf-cargo-make/actions/workflows/build.yml?query=branch%3Amain) [![Lint](https://github.com/kachick/asdf-cargo-make/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/kachick/asdf-cargo-make/actions/workflows/lint.yml?query=branch%3Amain) [![rtx](https://github.com/kachick/asdf-cargo-make/actions/workflows/rtx.yml/badge.svg?branch=main)](https://github.com/kachick/asdf-cargo-make/actions/workflows/rtx.yml?query=branch%3Amain)
 
-[cargo-make](https://sagiegurari.github.io/cargo-make/) plugin for the [asdf version manager](https://asdf-vm.com).
+[cargo-make](https://sagiegurari.github.io/cargo-make/) plugin for the [asdf version manager](https://asdf-vm.com).  \
+Tested also [rtx](https://github.com/jdxcode/rtx).
 
 # Contents
 
