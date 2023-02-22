@@ -27,9 +27,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - uses: jdxcode/rtx-action@v1
+      - uses: kachick/rtx-action@gh-api-late-limit
         with:
           tool_versions: ${{ matrix.target.tool-versions }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Make sure "rtx" is using this as shorthand
         run: rtx plugins --urls | grep -F 'kachick/asdf-cargo-make'
       - name: Test
