@@ -27,7 +27,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - uses: kachick/rtx-action@gh-api-late-limit
+      - uses: jdxcode/rtx-action@v1
         with:
           tool_versions: ${{ matrix.target.tool-versions }}
         env:
