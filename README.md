@@ -5,13 +5,6 @@
 [cargo-make](https://sagiegurari.github.io/cargo-make/) plugin for the [asdf version manager](https://asdf-vm.com).\
 Tested also [rtx](https://github.com/jdxcode/rtx).
 
-# Contents
-
-- [Dependencies](#dependencies)
-- [Install](#install)
-- [Contributing](#contributing)
-- [License](#license)
-
 # Dependencies
 
 - `bash`, `curl`, `unzip`: generic POSIX utilities.
