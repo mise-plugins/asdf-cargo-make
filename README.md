@@ -9,6 +9,11 @@ Tested also [rtx](https://github.com/jdxcode/rtx).
 
 - `bash`, `curl`, `unzip`: generic POSIX utilities.
 
+This plugin requires `unzip` to be installed.
+
+If you have a Debian system like Ubuntu, you can install it by typing
+`sudo apt-get install unzip`.
+
 # Install
 
 Plugin:
