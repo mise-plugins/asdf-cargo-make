@@ -19,7 +19,7 @@ jobs:
           - ubuntu-latest
           - macos-latest
         target:
-          - command: rtx x cargo-make@0.36.5 -- makers --version && rtx x cargo-make@0.36.5 -- cargo-make make --version
+          - command: rtx x cargo-make@latest -- makers --version && rtx x cargo-make@latest -- cargo-make make --version
           - # makers does not exist
             command: 'rtx x cargo-make@0.16.0 -- cargo-make make --version'
     runs-on: ${{ matrix.os }}
