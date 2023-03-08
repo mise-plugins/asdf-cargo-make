@@ -20,8 +20,7 @@ jobs:
           - macos-latest
         target:
           - rtx-tool-version: cargo-make@0.36.5
-            command: |
-              rtx x ${{ matrix.target.rtx-tool-version }} -- makers --version && rtx x ${{ matrix.target.rtx-tool-version }} -- cargo-make make --version
+            command: rtx x ${{ matrix.target.rtx-tool-version }} -- makers --version && rtx x ${{ matrix.target.rtx-tool-version }} -- cargo-make make --version
           # https://github.com/kachick/asdf-cargo-make/blob/8a7095692e6a880568a5b48c441ea518ef6a61cb/bin/download#L12
           # https://github.com/kachick/asdf-cargo-make/blob/8a7095692e6a880568a5b48c441ea518ef6a61cb/lib/utils.bash#L59-L61
           - rtx-tool-version: cargo-make@0.16.0
