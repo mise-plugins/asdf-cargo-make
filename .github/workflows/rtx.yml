@@ -40,8 +40,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           rtx install cargo-make https://github.com/kachick/asdf-cargo-make.git
-          rtx plugins update cargo-make@${{ github.ref_name }}
-      - run: |
+          rtx plugins update cargo-make@${{ github.ref }}
           rtx install ${{ matrix.target.tool-versions }}
           rtx local ${{ matrix.target.tool-versions }}
       - name: Make sure "rtx" is using this as shorthand
