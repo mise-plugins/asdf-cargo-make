@@ -39,11 +39,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
-          rtx install cargo-make http://github.com/kachick/asdf-cargo-make.git#${{ github.ref_name }}
-        if: github.event_name == 'push'
-      - run: |
-          rtx install cargo-make http://github.com/kachick/asdf-cargo-make.git#${{ github.event.pull_request.head.sha }}
-        if: github.event_name == 'pull_request'
+          rtx install cargo-make http://github.com/kachick/asdf-cargo-make.git
+          rtx plugins update cargo-make@${{ github.ref_name }}
       - run: |
           rtx install ${{ matrix.target.tool-versions }}
           rtx local ${{ matrix.target.tool-versions }}
