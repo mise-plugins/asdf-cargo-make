@@ -1,8 +1,13 @@
 name: rtx
 on:
-  schedule:
-    # About JST 8:00
-    - cron: '0 17 * * *'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
   workflow_dispatch:
 
 jobs:
@@ -16,12 +21,12 @@ jobs:
           - macos-latest
         target:
           - tool-versions: |
-              cargo-make 0.36.5
+              cargo-make@0.36.5
             command: 'makers --version && cargo-make make --version'
           # https://github.com/kachick/asdf-cargo-make/blob/8a7095692e6a880568a5b48c441ea518ef6a61cb/bin/download#L12
           # https://github.com/kachick/asdf-cargo-make/blob/8a7095692e6a880568a5b48c441ea518ef6a61cb/lib/utils.bash#L59-L61
           - tool-versions: |
-              cargo-make 0.16.0
+              cargo-make@0.16.0
             # makers does not exist
             command: 'cargo-make make --version'
     runs-on: ${{ matrix.os }}
@@ -29,9 +34,13 @@ jobs:
       - uses: actions/checkout@v3
       - uses: jdxcode/rtx-action@v1
         with:
-          tool_versions: ${{ matrix.target.tool-versions }}
+          tool_versions: '' # Should not set cargo-make versions here
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run:
+          rtx install cargo-make http://github.com/kachick/asdf-cargo-make#${{ github.ref_name }}
+          rtx install ${{ matrix.target.tool-versions }}
+          rtx local ${{ matrix.target.tool-versions }}
       - name: Make sure "rtx" is using this as shorthand
         run: rtx plugins --urls | grep -F 'kachick/asdf-cargo-make'
       - name: Test
