@@ -32,11 +32,12 @@ jobs:
             shellcheck 0.9.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # https://github.com/jdxcode/rtx/issues/188#issuecomment-1441835716
-          RTX_MISSING_RUNTIME_BEHAVIOR: autoinstall
       - name: Setup rtx
         run: |
           rtx plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
       - name: Test
         run: |
           ${{ matrix.target.command }}
+        env:
+          # https://github.com/jdxcode/rtx/issues/188#issuecomment-1441835716
+          RTX_MISSING_RUNTIME_BEHAVIOR: autoinstall
