@@ -16,9 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: asdf-vm/actions/setup@v1
-      - run: 'asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git'
-      - run: 'asdf install cargo-make'
+      - uses: jdxcode/rtx-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: 'makers help'
       - run: 'makers setup'
       - run: 'makers check'
