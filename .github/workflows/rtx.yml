@@ -19,13 +19,11 @@ jobs:
           - ubuntu-latest
           - macos-latest
         target:
-          - tool-versions: |
-              cargo-make@0.36.5
+          - rtx-tool-version: cargo-make@0.36.5
             command: 'makers --version && cargo-make make --version'
           # https://github.com/kachick/asdf-cargo-make/blob/8a7095692e6a880568a5b48c441ea518ef6a61cb/bin/download#L12
           # https://github.com/kachick/asdf-cargo-make/blob/8a7095692e6a880568a5b48c441ea518ef6a61cb/lib/utils.bash#L59-L61
-          - tool-versions: |
-              cargo-make@0.16.0
+          - rtx-tool-version: cargo-make@0.16.0
             # makers does not exist
             command: 'cargo-make make --version'
     runs-on: ${{ matrix.os }}
@@ -41,7 +39,7 @@ jobs:
       - name: Setup rtx
         run: |
           rtx plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
-          rtx install ${{ matrix.target.tool-versions }}
+          rtx install ${{ matrix.target.rtx-tool-version }}
       - name: Test
         run: |
-          rtx x ${{ matrix.target.tool-versions }} -- ${{ matrix.target.command }}
+          rtx x ${{ matrix.target.rtx-tool-version }} -- ${{ matrix.target.command }}
