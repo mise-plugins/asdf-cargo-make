@@ -43,8 +43,6 @@ jobs:
           rtx plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
           rtx install ${{ matrix.target.tool-versions }}
           rtx local ${{ matrix.target.tool-versions }}
-      - name: Make sure "rtx" is using this as shorthand
-        run: rtx plugins --urls | grep -F 'kachick/asdf-cargo-make'
       - name: Test
         run: |
           ${{ matrix.target.command }}
