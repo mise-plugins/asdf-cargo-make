@@ -8,7 +8,6 @@ on:
   pull_request:
     paths-ignore:
       - '**.md'
-  workflow_dispatch:
 
 jobs:
   plugin-test:
@@ -40,7 +39,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
-          rtx install cargo-make http://github.com/kachick/asdf-cargo-make#${{ github.ref }}
+          rtx install cargo-make http://github.com/kachick/asdf-cargo-make#${{ github.ref_name }}
+        if: github.event_name == 'push'
+      - run: |
+          rtx install cargo-make http://github.com/kachick/asdf-cargo-make#${{ github.event.pull_request.head.sha }}
+        if: github.event_name == 'pull_request'
+      - run: |
           rtx install ${{ matrix.target.tool-versions }}
           rtx local ${{ matrix.target.tool-versions }}
       - name: Make sure "rtx" is using this as shorthand
