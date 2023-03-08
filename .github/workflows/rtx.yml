@@ -39,7 +39,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
-          rtx install cargo-make http://github.com/kachick/asdf-cargo-make.git
+          rtx install cargo-make https://github.com/kachick/asdf-cargo-make.git
           rtx plugins update cargo-make@${{ github.ref_name }}
       - run: |
           rtx install ${{ matrix.target.tool-versions }}
