@@ -30,7 +30,7 @@ jobs:
             command: 'cargo-make make --version'
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: asdf-vm/actions/plugin-test@v1
+      - uses: asdf-vm/actions/plugin-test@v2
         with:
           version: ${{ matrix.target.tool-version }}
           command: ${{ matrix.target.command }}
