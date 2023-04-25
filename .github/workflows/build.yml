@@ -19,7 +19,7 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest
+          - macos-latest-xl
         target:
           - tool-version: 'latest'
             command: 'makers --version && cargo-make make --version'

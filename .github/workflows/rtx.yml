@@ -17,7 +17,7 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest
+          - macos-latest-xl
         target:
           - command: rtx x cargo-make@latest -- makers --version && rtx x cargo-make@latest -- cargo-make make --version
           - # makers does not exist
