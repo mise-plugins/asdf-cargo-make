@@ -18,8 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: asdf-vm/actions/setup@v2
-      - run: 'asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git'
-      - run: 'asdf install cargo-make'
-      - run: 'makers help'
-      - run: 'makers setup'
-      - run: 'makers check'
+      - run: |
+          asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git
+          asdf install cargo-make
+          makers help
+          makers setup
+          makers check
