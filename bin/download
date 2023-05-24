@@ -9,7 +9,7 @@ plugin_dir=$(dirname "$(dirname "$current_script_path")")
 source "${plugin_dir}/lib/utils.bash"
 
 if ! is_supporting_cargomake_version; then
-  fail "Supporting cargo-make versions since 0.16.0 or later"
+	fail "Supporting cargo-make versions since 0.16.0 or later"
 fi
 
 mkdir -p "$ASDF_DOWNLOAD_PATH"
