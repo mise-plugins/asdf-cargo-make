@@ -9,6 +9,9 @@ on:
   pull_request:
     paths-ignore:
       - '**.md'
+  schedule:
+    # About JST 8:00
+    - cron: '0 17 * * *'
   workflow_dispatch:
 
 jobs:
