@@ -5,17 +5,14 @@ skip_core_tasks = true
 category = "Tools"
 description = "Run linters without changes"
 script = [
-  "./scripts/shellcheck.bash",
-  "./scripts/shfmt.bash",
-  "dprint check",
+  "./scripts/lint.bash",
 ]
 
 [tasks.format]
 category = "Tools"
 description = "Run formatters with changes"
 script = [
-  "shfmt --write ./bin/* ./lib/*",
-  "dprint fmt",
+  "./scripts/format.bash",
 ]
 
 [tasks.check_no_git_diff]
