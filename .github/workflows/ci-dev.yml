@@ -9,6 +9,9 @@ on:
   pull_request:
     paths-ignore:
       - '**.md'
+  schedule:
+    # About JST 8:00
+    - cron: '0 17 * * *'
   workflow_dispatch:
 
 jobs:
@@ -18,8 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: asdf-vm/actions/setup@v2
-      - run: 'asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git'
-      - run: 'asdf install cargo-make'
-      - run: 'makers help'
-      - run: 'makers setup'
-      - run: 'makers check'
+      - run: |
+          asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git
+          asdf install cargo-make
+          makers help
+          makers setup
+          makers check
