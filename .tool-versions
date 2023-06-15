@@ -1,4 +1,4 @@
 shellcheck 0.9.0
 shfmt 3.6.0
 dprint 0.37.1
-cargo-make 0.36.10
+cargo-make 0.36.11
