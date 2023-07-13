@@ -25,11 +25,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - uses: jdxcode/rtx-action@v1
+      - uses: kachick/rtx-action@adb782b2b175bc415c42b02801fad7d14b8d44c2 # https://github.com/kachick/asdf-cargo-make/pull/76
         with:
           tool_versions: |
             # Should not set cargo-make versions here. (Actually shellcheck is not used here)
             shellcheck 0.9.0
+          cache: false # Enabling this made https://github.com/kachick/asdf-cargo-make/issues/75
       - name: Setup rtx
         run: |
           rtx plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
