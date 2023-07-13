@@ -15,15 +15,11 @@ jobs:
       - name: Dependabot metadata
         id: metadata
         uses: dependabot/fetch-metadata@v1.6.0
-        with:
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
-      - uses: actions/checkout@v3
       - name: Wait other jobs
         if: ${{steps.metadata.outputs.update-type != 'version-update:semver-major'}}
         uses: kachick/wait-other-jobs@v1
         timeout-minutes: 30
         with:
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
           retry-method: 'equal_intervals'
           min-interval-seconds: '15'
       - name: Approve and merge
@@ -44,12 +40,10 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'renovate[bot]' }}
     steps:
-      - uses: actions/checkout@v3
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v1
         timeout-minutes: 30
         with:
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
           retry-method: 'equal_intervals'
           min-interval-seconds: '15'
       - name: Approve and merge
