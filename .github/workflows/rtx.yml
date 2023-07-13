@@ -30,7 +30,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - uses: kachick/rtx-action@50aa704cb56359f28ca59de9ae9be92bec2523d6 # https://github.com/kachick/asdf-cargo-make/pull/76
+      - uses: kachick/rtx-action@adb782b2b175bc415c42b02801fad7d14b8d44c2 # https://github.com/kachick/asdf-cargo-make/pull/76
         with:
           tool_versions: |
             # Should not set cargo-make versions here. (Actually shellcheck is not used here)
