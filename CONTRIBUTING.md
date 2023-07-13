@@ -13,7 +13,7 @@ shfmt 3.5.1 is already installed
 [cargo-make] INFO - Build Done in 1.09 seconds.
 ```
 
-`help` shows providing tasks for developping
+`help` shows providing tasks for developing
 
 ```console
 $ makers help
