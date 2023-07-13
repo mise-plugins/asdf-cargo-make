@@ -36,6 +36,7 @@ jobs:
             # Should not set cargo-make versions here. (Actually shellcheck is not used here)
             shellcheck 0.9.0
           rtx_version: ${{ matrix.rtx-version }}
+          cache: false
       - name: Setup rtx
         run: |
           rtx plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
