@@ -18,6 +18,11 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
+        rtx-version:
+          - latest
+          - v1.34.0
+          - v1.33.0
+          - v1.32.5
         target:
           - command: rtx x cargo-make@latest -- makers --version && rtx x cargo-make@latest -- cargo-make make --version
           - # makers does not exist
@@ -25,11 +30,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - uses: jdxcode/rtx-action@v1
+      - uses: kachick/rtx-action@add-option-rtx-version
         with:
           tool_versions: |
             # Should not set cargo-make versions here. (Actually shellcheck is not used here)
             shellcheck 0.9.0
+          rtx_version: ${{ matrix.rtx-version }}
       - name: Setup rtx
         run: |
           rtx plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
