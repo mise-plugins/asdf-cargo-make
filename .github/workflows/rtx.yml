@@ -43,6 +43,3 @@ jobs:
       - name: Test
         run: |
           ${{ matrix.target.command }}
-        env:
-          # https://github.com/jdxcode/rtx/issues/188#issuecomment-1441835716
-          RTX_MISSING_RUNTIME_BEHAVIOR: autoinstall
