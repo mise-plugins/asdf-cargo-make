@@ -37,12 +37,9 @@ jobs:
             # - This comment should have different value for each run to avoid the cache. See #75 and #77
             #   - avoid-cache-key: ${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
             # - Don't set cargo-make versions here. Keep no tools for clean room test
-      - name: Setup rtx
+      - name: Install plugin
         run: |
           rtx plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
       - name: Test
         run: |
           ${{ matrix.target.command }}
-        env:
-          # https://github.com/jdxcode/rtx/issues/188#issuecomment-1441835716
-          RTX_MISSING_RUNTIME_BEHAVIOR: autoinstall
