@@ -19,18 +19,25 @@ jobs:
           - ubuntu-latest
           - macos-latest
         target:
-          - command: rtx x cargo-make@latest -- makers --version && rtx x cargo-make@latest -- cargo-make make --version
-          - # makers does not exist
-            command: 'rtx x cargo-make@0.16.0 -- cargo-make make --version'
+          - command: |
+              rtx install cargo-make@latest
+              rtx x cargo-make@latest -- makers --version
+              rtx x cargo-make@latest -- cargo-make make --version
+          # Supported oldest
+          - command: |
+              rtx install cargo-make@0.16.0
+              # makers does not exist
+              rtx x cargo-make@0.16.0 -- cargo-make make --version
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - uses: kachick/rtx-action@adb782b2b175bc415c42b02801fad7d14b8d44c2 # https://github.com/kachick/rtx-action/pull/1
+      - uses: jdxcode/rtx-action@v1.2.0
         with:
           tool_versions: |
-            # Should not set cargo-make versions here. (Actually shellcheck is not used here)
+            # - This comment should have different value for each run to avoid the cache. See #75 and #77
+            #   - avoid-cache-key: ${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+            # - Don't set cargo-make versions here. (Actually shellcheck is not used here, just a common plugin)
             shellcheck 0.9.0
-          cache: false # Enabling this made https://github.com/kachick/asdf-cargo-make/issues/75
       - name: Setup rtx
         run: |
           rtx plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
