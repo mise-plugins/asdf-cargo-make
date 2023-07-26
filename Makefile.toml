@@ -54,6 +54,8 @@ script = [
   '(asdf plugin-list | grep shellcheck) || asdf plugin-add shellcheck https://github.com/luizm/asdf-shellcheck.git',
   # https://github.com/asdf-vm/asdf-plugins/blob/6498384c22a29602d065d3db681b8f32f7e4295b/plugins/shfmt#L1
   '(asdf plugin-list | grep shfmt) || asdf plugin-add shfmt https://github.com/luizm/asdf-shfmt.git',
+  # https://github.com/asdf-vm/asdf-plugins/pull/858
+  '(asdf plugin-list | grep typos) || asdf plugin-add typos asdf plugin add typos https://github.com/aschiavon91/asdf-typos.git',
   'asdf install',
 ]
 
