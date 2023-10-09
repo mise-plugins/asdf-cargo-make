@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: asdf-vm/actions/setup@v2
+      - uses: asdf-vm/actions/setup@v3
       - run: |
           asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git
           asdf install cargo-make
