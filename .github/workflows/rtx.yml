@@ -36,7 +36,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: jdxcode/rtx-action@v1.2.7
+      - uses: jdxcode/rtx-action@v1.3.1
         with:
           tool_versions: |
             # - This comment should have different value for each run to avoid the cache. See #75 and #77
