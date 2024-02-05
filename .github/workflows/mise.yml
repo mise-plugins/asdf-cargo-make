@@ -1,4 +1,4 @@
-name: rtx
+name: mise
 on:
   push:
     branches:
@@ -25,18 +25,18 @@ jobs:
           - macos-latest
         target:
           - command: |
-              rtx install cargo-make@latest
-              rtx x cargo-make@latest -- makers --version
-              rtx x cargo-make@latest -- cargo-make make --version
+              mise install cargo-make@latest
+              mise x cargo-make@latest -- makers --version
+              mise x cargo-make@latest -- cargo-make make --version
           # Supported oldest
           - command: |
-              rtx install cargo-make@0.16.0
+              mise install cargo-make@0.16.0
               # makers does not exist
-              rtx x cargo-make@0.16.0 -- cargo-make make --version
+              mise x cargo-make@0.16.0 -- cargo-make make --version
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: jdxcode/rtx-action@v1.3.2
+      - uses: jdx/mise-action@v2
         with:
           tool_versions: |
             # - This comment should have different value for each run to avoid the cache. See #75 and #77
@@ -44,7 +44,7 @@ jobs:
             # - Don't set cargo-make versions here. Keep no tools for clean room test
       - name: Install plugin
         run: |
-          rtx plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
+          mise plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
       - name: Test
         run: |
           ${{ matrix.target.command }}
