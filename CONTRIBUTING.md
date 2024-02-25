@@ -51,3 +51,7 @@ cargo-make 0.36.2 installation was successful!
 cargo-make 0.36.2
 [cargo-make] INFO - Build Done in 3.47 seconds.
 ```
+
+## How to release
+
+Add and push tag that have `v` prefix
