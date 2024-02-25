@@ -18,7 +18,14 @@ on:
 jobs:
   tasks:
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-14 # M1
+          - macos-13 # Intel
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: asdf-vm/actions/setup@v3
