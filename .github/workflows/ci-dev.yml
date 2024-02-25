@@ -31,7 +31,7 @@ jobs:
       - uses: asdf-vm/actions/setup@v3
       - run: |
           asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git
-          asdf plugin update ${{ github.ref }} # https://github.com/asdf-vm/asdf/issues/1201
+          asdf plugin update cargo-make ${{ github.ref }} # https://github.com/asdf-vm/asdf/issues/1201
           asdf install cargo-make
           makers help
           makers setup
