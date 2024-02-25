@@ -42,6 +42,7 @@ jobs:
           - os: macos-14
             target:
               - tool-version: '0.16.0'
+                command: 'cargo-make make --version'
     runs-on: ${{ matrix.os }}
     steps:
       - uses: asdf-vm/actions/plugin-test@v3
