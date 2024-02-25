@@ -38,6 +38,12 @@ jobs:
           - os: macos-14 # M1
             target:
               command: |
+                mise install cargo-make@latest
+                mise x cargo-make@latest -- makers --version
+                mise x cargo-make@latest -- cargo-make make --version
+          - os: macos-14 # M1
+            target:
+              command: |
                 mise install cargo-make@0.36.7
                 mise x cargo-make@latest -- makers --version
                 mise x cargo-make@latest -- cargo-make make --version
