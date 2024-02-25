@@ -22,7 +22,7 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest
+          - macos-13 # Intel
         target:
           - command: |
               mise install cargo-make@latest
@@ -33,6 +33,20 @@ jobs:
               mise install cargo-make@0.16.0
               # makers does not exist
               mise x cargo-make@0.16.0 -- cargo-make make --version
+        include:
+          # They are releasing aarch64 binary since 0.36.7: https://github.com/sagiegurari/cargo-make/commit/ab3cac2261c0ba67ab6d7a277aff8252faec0b1c
+          - os: macos-14 # M1
+            target:
+              command: |
+                mise install cargo-make@latest
+                mise x cargo-make@latest -- makers --version
+                mise x cargo-make@latest -- cargo-make make --version
+          - os: macos-14 # M1
+            target:
+              command: |
+                mise install cargo-make@0.36.7
+                mise x cargo-make@latest -- makers --version
+                mise x cargo-make@latest -- cargo-make make --version
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4

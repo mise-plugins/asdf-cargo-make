@@ -18,12 +18,20 @@ on:
 jobs:
   tasks:
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          # - macos-14 # M1 # asdf-typos does not support yet https://github.com/aschiavon91/asdf-typos/blob/98babb263fc77a9d9f2aaebb257899c29cb4c5d4/bin/download#L21
+          - macos-13 # Intel
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: asdf-vm/actions/setup@v3
       - run: |
           asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git
+          asdf plugin update cargo-make ${{ github.ref }} # https://github.com/asdf-vm/asdf/issues/1201
           asdf install cargo-make
           makers help
           makers setup

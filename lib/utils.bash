@@ -66,7 +66,8 @@ download_release() {
 
 	case "$(uname -m)" in
 	x86_64*) architecture="x86_64" ;;
-	aarch64 | arm64) fail "Unsupported architecture for now. See https://github.com/sagiegurari/cargo-make/issues/738" ;;
+	# They are releasing aarch64 binary since 0.36.7: https://github.com/sagiegurari/cargo-make/commit/ab3cac2261c0ba67ab6d7a277aff8252faec0b1c
+	aarch64 | arm64) architecture="aarch64" ;;
 	*) fail "Unsupported architecture" ;;
 	esac
 
