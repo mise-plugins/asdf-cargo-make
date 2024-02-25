@@ -40,11 +40,12 @@ jobs:
           # They are releasing aarch64 binary since 0.36.7: https://github.com/sagiegurari/cargo-make/commit/ab3cac2261c0ba67ab6d7a277aff8252faec0b1c
           - os: macos-14 # M1
             target:
-              - tool-version: 'latest'
-                command: 'makers --version && cargo-make make --version'
-              # They are releasing aarch64 binary since 0.36.7: https://github.com/sagiegurari/cargo-make/commit/ab3cac2261c0ba67ab6d7a277aff8252faec0b1c
-              - tool-version: '0.36.7'
-                command: 'makers --version && cargo-make make --version'
+              tool-version: 'latest'
+              command: 'makers --version && cargo-make make --version'
+          - os: macos-14 # M1
+            target:
+              tool-version: '0.36.7'
+              command: 'makers --version && cargo-make make --version'
     runs-on: ${{ matrix.os }}
     steps:
       - uses: asdf-vm/actions/plugin-test@v3
