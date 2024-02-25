@@ -23,7 +23,8 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest
+          - macos-14 # M1
+          - macos-13 # Intel
         target:
           - tool-version: 'latest'
             command: 'makers --version && cargo-make make --version'

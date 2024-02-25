@@ -22,7 +22,8 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest
+          - macos-14 # M1
+          - macos-13 # Intel
         target:
           - command: |
               mise install cargo-make@latest
