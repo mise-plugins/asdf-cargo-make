@@ -23,7 +23,7 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          # - macos-14 # M1 # asdf-typos does not support yet https://github.com/aschiavon91/asdf-typos/blob/98babb263fc77a9d9f2aaebb257899c29cb4c5d4/bin/download#L21
+          - macos-14 # M1
           - macos-13 # Intel
     runs-on: ${{ matrix.os }}
     steps:
