@@ -88,12 +88,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v2
+      - uses: jdx/mise-action@3bc85396a273ed82bba5e53a15174bbf9dba095c # v2.0.2
         with:
-          tool_versions: |
-            # - This comment should have different value for each run to avoid the cache. See #75 and #77
-            #   - avoid-cache-key: ${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
-            # - Don't set cargo-make versions here. Keep no tools for clean room test
+          install: false
+          # Enabling plugin cache in mise-action made many problems, should be avoided
+          # https://github.com/kachick/asdf-cargo-make/pull/77
+          # https://github.com/jdx/rtx-action/issues/211
+          # https://github.com/kachick/asdf-zigmod/pull/138/commits/e47254c4d99a2f13d4265522290bbec12c3466cb
+          cache: false
       - name: Install plugin
         run: |
           mise plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
