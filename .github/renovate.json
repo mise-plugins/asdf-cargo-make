@@ -4,7 +4,7 @@
     "github>kachick/renovate-config-dprint"
   ],
   "labels": ["dependencies", "renovate"],
-  "enabledManagers": ["asdf", "regex"],
+  "enabledManagers": ["asdf", "regex", "nix"],
   "prHourlyLimit": 10,
   "prConcurrentLimit": 5,
   "packageRules": [
@@ -14,5 +14,11 @@
       ],
       "rangeStrategy": "bump"
     }
-  ]
+  ],
+  "nix": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true
+  }
 }
