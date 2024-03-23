@@ -28,11 +28,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: asdf-vm/actions/setup@v3
+      - uses: DeterminateSystems/nix-installer-action@v10
+      - run: nix develop --command echo 'This step should be done before any other "nix develop" steps because of measuring Nix build time'
       - run: |
-          asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git
-          asdf plugin update cargo-make ${{ github.ref }} # https://github.com/asdf-vm/asdf/issues/1201
-          asdf install cargo-make
-          makers help
-          makers setup
-          makers check
+          nix develop --command bash -c '
+            asdf plugin-add cargo-make https://github.com/kachick/asdf-cargo-make.git
+            asdf plugin update cargo-make ${{ github.ref }} # https://github.com/asdf-vm/asdf/issues/1201
+            asdf install cargo-make
+            makers help
+            makers setup
+            makers check
+          '

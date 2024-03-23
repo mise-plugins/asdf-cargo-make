@@ -7,6 +7,7 @@ Tested also [mise](https://github.com/jdx/mise).
 
 # Dependencies
 
+- `asdf-vm` or `mise`
 - `bash`, `curl`, `unzip`: generic POSIX utilities.
 
 This plugin requires `unzip` to be installed.
