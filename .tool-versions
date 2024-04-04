@@ -2,4 +2,4 @@ shellcheck 0.10.0
 shfmt 3.8.0
 dprint 0.45.0
 cargo-make 0.37.10
-typos 1.20.3
+typos 1.20.4
