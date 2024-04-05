@@ -1,5 +1,5 @@
 shellcheck 0.10.0
 shfmt 3.8.0
 dprint 0.45.1
-cargo-make 0.37.10
+cargo-make 0.37.11
 typos 1.20.4
