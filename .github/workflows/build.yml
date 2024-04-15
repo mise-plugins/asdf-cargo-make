@@ -88,7 +88,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: jdx/mise-action@3e282fcd55c8de21f232397e9fb876cd33e612f1 # v2.0.3
+      - uses: jdx/mise-action@0c39a522dfbced3ed83924152c45804a71ce216f # v2.0.4
         with:
           install: false
           # Enabling plugin cache in mise-action made many problems, should be avoided
