@@ -83,8 +83,8 @@ jobs:
             target:
               command: |
                 mise install cargo-make@0.36.7
-                mise x cargo-make@latest -- makers --version
-                mise x cargo-make@latest -- cargo-make make --version
+                mise x cargo-make@0.36.7 -- makers --version
+                mise x cargo-make@0.36.7 -- cargo-make make --version
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
