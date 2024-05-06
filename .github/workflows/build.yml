@@ -98,7 +98,7 @@ jobs:
           cache: false
       - name: Install plugin
         run: |
-          mise plugins install cargo-make https://github.com/kachick/asdf-cargo-make.git#${{ github.ref }}
+          mise plugins install cargo-make 'https://github.com/${{ github.repository }}.git#${{ github.ref }}'
       - name: Test
         run: |
           ${{ matrix.target.command }}
