@@ -58,4 +58,4 @@ Contributions of any kind welcome! See the [contributing guide](CONTRIBUTING.md)
 
 # License
 
-See [LICENSE](LICENSE) © [Kenichi Kamiya](https://github.com/kachick/)
+See [LICENSE](LICENSE)
